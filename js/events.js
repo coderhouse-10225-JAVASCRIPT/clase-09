@@ -6,6 +6,10 @@ function myButtonClicked(parametro) {
     console.dir(parametro);
 }
 
+function myButtonMouseMove() {
+    console.log("Boton Mouse move");
+}
+
 // luego gestiono los eventos
 // Con Event Listener
 //myButtonLogin.addEventListener("click", myButtonClicked);
@@ -13,6 +17,7 @@ function myButtonClicked(parametro) {
 // Asigne a todos los botones la misma funcion
 for (const button of myButtonsLogin) {
     button.addEventListener("click", myButtonClicked);
+    button.addEventListener("mousemove", myButtonMouseMove);
 }
 
 
@@ -29,3 +34,35 @@ limpiar.onclick = () => {
 //myButtonLogin.onclick = (parametro) => console.log("Boton clickeado" + parametro);
 
 
+/////////////////////////////////////////////////
+// Ahora capturamos input del usuario
+let myNewUserInput = document.getElementById("usuario");
+
+myNewUserInput.onkeydown = () => console.log("tecla presionada");
+myNewUserInput.onkeyup =  () => console.log("se dejo presionar tecla")
+
+
+
+/////////////////////////////////////////////////////
+// Capturo texto del form y lo mandamos al textarea
+let myForm = document.getElementById("support");
+let mySupportInput = document.getElementById("supportInput");
+let mySupportChat = document.getElementById("supportChat");
+myForm.addEventListener("submit", sendChatText);
+
+
+function sendChatText(evento){
+    evento.preventDefault();
+    console.dir(mySupportInput);
+    console.log("Enviando" + mySupportInput.value);
+    mySupportChat.innerText = mySupportChat.innerText + mySupportInput.value
+    mySupportInput.value = "";
+
+    //recorro todos los childen del evento.target
+    let formulario = evento.target;
+    for (const children of formulario.children) {
+        console.log(children)
+    }
+
+
+}
