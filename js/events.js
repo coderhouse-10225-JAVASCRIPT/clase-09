@@ -60,8 +60,8 @@ function sendChatText(evento){
 
     //recorro todos los childen del evento.target
     let formulario = evento.target;
-    for (const children of formulario.children) {
-        console.log(children)
+    for (const child of formulario.children) {
+        console.log(child)
     }
 
 
